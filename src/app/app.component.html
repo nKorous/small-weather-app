@@ -1,11 +1,11 @@
-<mat-toolbar>
+<mat-toolbar color='primary'>
   <button mat-icon-button [matMenuTriggerFor]='menu' aria-label='Main Menu button'>
     <mat-icon>menu</mat-icon>
   </button>
   <span style='flex: 1 1'></span>
 </mat-toolbar>
 
-<mat-menu #menu='menu'>
+<mat-menu #menu='matMenu'>
   <button mat-menu-item routerLink='/home' routerLinkActive='true'>
     <mat-icon>home</mat-icon>
     <span>Home</span>
