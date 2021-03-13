@@ -1,13 +1,12 @@
-<mat-grid-list cols='8' rowHeight='93vh'>
+<mat-grid-list cols='8' rowHeight='98vh'>
   <mat-grid-tile colspan='2' class='gridTile'>
-    <div>
-      <mat-label>Search: </mat-label><input matInput #searchInput type='search' placholder='location'>
+    <mat-grid-tile-header>
+      <mat-label>Search for location: </mat-label><input matInput #searchInput type='search' placholder='location'>
       <button mat-raised-button (click)='getSearchLocations(searchInput.value)'>Search</button>
-    </div>
+    </mat-grid-tile-header>
 
-    <div *ngIf='searchLocations.length > 0' class='searchLocationContainer'>
-      <h2>Searched</h2>
-      <mat-card *ngFor='let location of searchLocations'>
+    <div *ngIf='searchLocations.length > 0' class='locationContainer'>
+      <mat-card *ngFor='let location of searchLocations' class='locationCard'>
         <mat-card-header>
           <mat-card-title>Location Name: {{ location.LocalizedName }}, {{ location.AdministrativeArea.LocalizedName }}</mat-card-title>
           <mat-card-subtitle *ngIf='location.stateName'>State/Province: {{ location.stateName }}</mat-card-subtitle>
@@ -17,6 +16,7 @@
         </mat-card-header>
         <mat-card-footer>
           <mat-card-actions style='text-align: center'>
+            <button mat-raised-button class='viewLocationButton' (click)='handleClickOnLocation(location.LocalizedName, location.Key)'><mat-icon>pageview</mat-icon>View Location</button>
             <button mat-raised-button color='accent' (click)='addFavorite(location)'><mat-icon>add</mat-icon>Add as Favorite</button>
           </mat-card-actions>
         </mat-card-footer>
@@ -25,9 +25,9 @@
   </mat-grid-tile>
 
   <mat-grid-tile colspan='2' class='gridTile'>
-    <div *ngIf='favoriteLocations.length > 0' class='favoriteLocationContainer'>
-      <h2>Favorites</h2>
-      <mat-card *ngFor='let location of favoriteLocations'>
+    <mat-grid-tile-header>Favorites</mat-grid-tile-header>
+    <div *ngIf='favoriteLocations.length > 0' class='locationContainer'>
+      <mat-card *ngFor='let location of favoriteLocations' class='locationCard'>
         <mat-card-header>
           <mat-card-title>Location Name: {{ location.locationName }}</mat-card-title>
           <mat-card-subtitle *ngIf='location.stateName'>State/Province: {{ location.stateName }}</mat-card-subtitle>
@@ -36,6 +36,7 @@
         </mat-card-header>
         <mat-card-footer>
           <mat-card-actions style='text-align: center'>
+            <button mat-raised-button class='viewLocationButton' (click)='handleClickOnLocation(location.locationName, location.locationId)'><mat-icon>pageview</mat-icon>View Location</button>
             <button mat-raised-button style='background-color: red; color: white' (click)='deleteFavorite(location.locationId)'><mat-icon>cancel</mat-icon>Delete Favorite</button>
           </mat-card-actions>
         </mat-card-footer>
@@ -44,8 +45,11 @@
   </mat-grid-tile>
 
   <mat-grid-tile colspan='4'>
-    <div *ngIf='currentConditions'>
-      <app-current-conditions [currentConditions]='currentConditions'></app-current-conditions>
+    <div *ngIf='currentlyViewedLocationName'>
+      <app-current-conditions
+        [currentConditions]='currentConditions'
+        [locationName]='currentlyViewedLocationName'
+        [oneDayForecast]='currentlyViewedOneDayForecast'></app-current-conditions>
     </div>
   </mat-grid-tile>
 </mat-grid-list>

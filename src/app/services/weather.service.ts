@@ -12,7 +12,6 @@ const BASE_URL = environment.endpoint
 })
 export class WeatherService {
   currentlyViewedLocation$: BehaviorSubject<number> = new BehaviorSubject(331216) //this is SLC as the default
-
   favoriteLocations$: BehaviorSubject<FavoriteLocation[]> = new BehaviorSubject([])
 
   constructor(private http: HttpClient) { }
@@ -45,5 +44,17 @@ export class WeatherService {
     const params = new HttpParams().set('locationID', locationId.toString())
 
     return this.http.get<CurrentConditions[]>(BASE_URL + '/api/weather/getCurrentConditions', { params })
+  }
+
+  getOneDayForecast(locationId: number) {
+    const params = new HttpParams().set('locationId', locationId.toString())
+
+    return this.http.get<any>(BASE_URL + '/api/weather/getOneDayForecast', { params })
+  }
+
+  getFiveDayForecast(locationId: number) {
+    const params = new HttpParams().set('locationId', locationId.toString())
+
+    return this.http.get<any>(BASE_URL + '/api/weather/getFiveDayForecast', { params })
   }
 }

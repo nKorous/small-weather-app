@@ -8,5 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CurrentConditionsComponent {
 @Input() currentConditions: CurrentConditions = null
+@Input() oneDayForecast: any
+@Input() locationName: string = null
 
 }

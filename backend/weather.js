@@ -83,16 +83,26 @@ router.get('/getCurrentConditions', async (req, res) => {
     })
 })
 
-router.get('/getFiveDayForcast', async (req, res) => {
-  const locationID = Number(req.query.locationID)
+router.get('/getFiveDayForecast', async (req, res) => {
+  const locationId = Number(req.query.locationId)
 
-  axios.get(`${WEATHER_BASE}/forecasts/v1/daily/5day/${locationID}?apikey=${API_KEY}`)
+  axios.get(`${WEATHER_BASE}/forecasts/v1/daily/5day/${locationId}?apikey=${API_KEY}`)
   .then( response => response.data )
   .then( data => res.status(200).send(data))
   .catch(err => {
-    sendErrorResponse('WARN', res, 'getFiveDayForcast', 'CANNOT GET FORCAST', err)
+    sendErrorResponse('WARN', res, 'getFiveDayForcast', 'CANNOT GET FORECAST', err)
   })
+})
 
+router.get('/getOneDayForecast', async (req, res) => {
+  const locationId = Number(req.query.locationId)
+
+  axios.get(`${WEATHER_BASE}/forecasts/v1/daily/1day/${locationId}?apikey=${API_KEY}`)
+  .then( response => response.data )
+  .then( data => res.status(200).send(data))
+  .catch(err => {
+    sendErrorResponse('WARN', res, 'getOneDayForcast', 'CANNOT GET FORECAST', err)
+  })
 })
 
 

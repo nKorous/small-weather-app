@@ -13,7 +13,9 @@ export class HomeComponent implements OnInit {
   favoriteLocations: FavoriteLocation[] = []
   searchLocations: any[] = []
   currentlyViewedLocationID: number
+  currentlyViewedLocationName: string
   currentConditions: CurrentConditions = null
+  currentlyViewedOneDayForecast: any = null
 
 
   constructor(private weatherService: WeatherService) { }
@@ -47,7 +49,13 @@ export class HomeComponent implements OnInit {
   getCurrentConditions(locationId: number){
     this.weatherService.getCurrentConditions(locationId).subscribe(conditions => {
       this.currentConditions = conditions.length > 0 ? { ...conditions[0] } : null
-      console.log(this.currentConditions)
+    })
+  }
+
+  getOneDayForecast(locationId: number) {
+    this.weatherService.getOneDayForecast(locationId).subscribe(forecast => {
+      this.currentlyViewedOneDayForecast = forecast.DailyForecasts[0]
+      console.log(this.currentlyViewedOneDayForecast)
     })
   }
 
@@ -57,6 +65,14 @@ export class HomeComponent implements OnInit {
 
   deleteFavorite(locationId: number){
     this.weatherService.deleteFavoriteLocation(locationId)
+  }
+
+  handleClickOnLocation(locationName: string, locationId: number) {
+    this.currentlyViewedLocationID = locationId
+    this.currentlyViewedLocationName = locationName
+
+    this.getCurrentConditions(locationId)
+    this.getOneDayForecast(locationId)
   }
 
 

@@ -1,22 +1,26 @@
-<mat-toolbar color='primary'>
-  <button mat-icon-button [matMenuTriggerFor]='menu' aria-label='Main Menu button'>
+<mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="menu"
+    aria-label="Main Menu button"
+  >
     <mat-icon>menu</mat-icon>
   </button>
-  <span style='flex: 1 1'></span>
+  <span style="flex: 1 1"></span>
 </mat-toolbar>
 
-<mat-menu #menu='matMenu'>
-  <button mat-menu-item routerLink='/home' routerLinkActive='true'>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="/home" routerLinkActive="true">
     <mat-icon>home</mat-icon>
     <span>Home</span>
   </button>
 
-  <button mat-menu-item routerLink='/dashboard' routerLinkActive='true'>
+  <button mat-menu-item routerLink="/dashboard" routerLinkActive="true">
     <mat-icon>dashboard</mat-icon>
     <span>Dashboard</span>
   </button>
 
-  <button mat-menu-item routerLink='/settings' routerLinkActive='true'>
+  <button mat-menu-item routerLink="/settings" routerLinkActive="true">
     <mat-icon>settings</mat-icon>
     <span>Settings</span>
   </button>

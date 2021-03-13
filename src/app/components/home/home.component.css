@@ -1,9 +1,26 @@
 .gridTile {
-  display: block !important;
-  justify-content: flex-start !important;
-  align-items: flex-start !important;
   border-right: 1px solid lightgray;
-  flex-direction: column !important;
-  overflow-y: auto
+  overflow-y: auto;
+}
+
+.locationCard {
+  margin-bottom: 10px;
+}
+
+.viewLocationButton {
+  background-color: green;
+  color: white;
+}
+
+::ng-deep mat-grid-tile-header {
+  z-index: 2;
+  position: static;
+}
+
+.locationContainer {
+  overflow-y: auto;
+  position: absolute;
+  top: 45px;
+  width: 95%;
 }
 
