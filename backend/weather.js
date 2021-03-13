@@ -60,7 +60,7 @@ router.get('/autocompleteLocationInfo', async (req, res)=> {
 router.get('/getCurrentConditions', async (req, res) => {
   const locationID = Number(req.query.locationID)
 
-  axios.get(`${WEATHER_BASE}/currentConditions/v1/${locationID}?apikey=${API_KEY}`)
+  axios.get(`${WEATHER_BASE}/currentconditions/v1/${locationID}?apikey=${API_KEY}`)
     .then( response => response.data )
     .then( data => res.status(200).send(data))
     .catch(err => {

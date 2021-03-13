@@ -3,6 +3,7 @@ import { environment } from './../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FavoriteLocation } from '../interfaces/favorite-location';
+import { BehaviorSubject } from 'rxjs';
 
 const BASE_URL = environment.endpoint
 
@@ -10,6 +11,7 @@ const BASE_URL = environment.endpoint
   providedIn: 'root'
 })
 export class WeatherService {
+  currentlyViewedLocation$: BehaviorSubject<number> = new BehaviorSubject(331216)
 
   constructor(private http: HttpClient) { }
 
@@ -38,6 +40,6 @@ export class WeatherService {
   getCurrentConditions(locationId: number) {
     const params = new HttpParams().set('locationID', locationId.toString())
 
-    return this.http.get<CurrentConditions[]>(BASE_URL + '/api/wather/getCurrentConditions', { params })
+    return this.http.get<CurrentConditions[]>(BASE_URL + '/api/weather/getCurrentConditions', { params })
   }
 }

@@ -18,7 +18,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { SettingsComponent } from './components/settings/settings.component';
-import { SearchComponent } from './components/search/search.component'
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -30,7 +29,6 @@ import { HttpClientModule } from '@angular/common/http';
     PageNotFoundComponent,
     TopbarComponent,
     SettingsComponent,
-    SearchComponent
   ],
   imports: [
     BrowserModule,

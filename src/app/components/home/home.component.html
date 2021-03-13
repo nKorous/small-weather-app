@@ -1,6 +1,51 @@
-<mat-grid-list cols='6' rowHeight='100%'>
-  <mat-grid-tile cols='2'>
-    <app-search></app-search>
+<mat-grid-list cols='8' rowHeight='93vh'>
+  <mat-grid-tile colspan='2' class='gridTile'>
+    <div>
+      <mat-label>Search: </mat-label><input matInput #searchInput type='search' placholder='location'>
+      <button mat-raised-button (click)='getSearchLocations(searchInput.value)'>Search</button>
+    </div>
   </mat-grid-tile>
-  <mat-grid-tile cols='4'>Data</mat-grid-tile>
+
+  <mat-grid-tile colspan='2' class='gridTile'>
+    <div *ngIf='favoriteLocations.length > 0' class='favoriteLocationContainer'>
+      <h2>Favorites</h2>
+      <mat-card *ngFor='let location of favoriteLocations'>
+        <mat-card-header>
+          <mat-card-title>Location Name: {{ location.locationName }}</mat-card-title>
+          <mat-card-subtitle *ngIf='location.stateName'>State/Province: {{ location.stateName }}</mat-card-subtitle>
+          <mat-card-subtitle>Country Name: {{ location.countryName }}</mat-card-subtitle>
+          <mat-card-subtitle>Location ID: {{ location.locationId }}</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </div>
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan='4'>
+    <div *ngIf='currentConditions'>
+      <h2>Current Conditions as of {{ currentConditions.LocalObservationDateTime | date: 'medium' }}</h2>
+      <div class='currentConditionCardContainer'>
+
+        <mat-card>
+          <mat-card-header>
+            <mat-card-subtitle>Current Temperature</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            {{ currentConditions.Temperature.Imperial.Value }}F
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card>
+          <mat-card-header>
+            <mat-card-subtitle>
+              Weather Type
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <span>{{ currentConditions.WeatherText }}</span>
+            <img style='border: 1px solid black; height: 50px; width: 50px' src='assets/weathericons/{{ currentConditions.WeatherIcon }}.png'>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </mat-grid-tile>
 </mat-grid-list>

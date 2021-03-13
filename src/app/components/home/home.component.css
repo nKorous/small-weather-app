@@ -1,0 +1,11 @@
+.gridTile {
+  display: block !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  border-right: 1px solid lightgray;
+}
+
+.currentConditionCardContainer {
+  display: flex;
+  flex-direction: row
+}
