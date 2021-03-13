@@ -4,6 +4,24 @@
       <mat-label>Search: </mat-label><input matInput #searchInput type='search' placholder='location'>
       <button mat-raised-button (click)='getSearchLocations(searchInput.value)'>Search</button>
     </div>
+
+    <div *ngIf='searchLocations.length > 0' class='searchLocationContainer'>
+      <h2>Searched</h2>
+      <mat-card *ngFor='let location of searchLocations'>
+        <mat-card-header>
+          <mat-card-title>Location Name: {{ location.LocalizedName }}, {{ location.AdministrativeArea.LocalizedName }}</mat-card-title>
+          <mat-card-subtitle *ngIf='location.stateName'>State/Province: {{ location.stateName }}</mat-card-subtitle>
+          <mat-card-subtitle>Country Name: {{ location.Country.LocalizedName }}</mat-card-subtitle>
+          <mat-card-subtitle>Location ID: {{ location.Key }}</mat-card-subtitle>
+          <mat-card-subtitle>Location Type: {{ location.Type }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-footer>
+          <mat-card-actions style='text-align: center'>
+            <button mat-raised-button color='accent' (click)='addFavorite(location)'><mat-icon>add</mat-icon>Add as Favorite</button>
+          </mat-card-actions>
+        </mat-card-footer>
+      </mat-card>
+    </div>
   </mat-grid-tile>
 
   <mat-grid-tile colspan='2' class='gridTile'>
@@ -16,36 +34,18 @@
           <mat-card-subtitle>Country Name: {{ location.countryName }}</mat-card-subtitle>
           <mat-card-subtitle>Location ID: {{ location.locationId }}</mat-card-subtitle>
         </mat-card-header>
+        <mat-card-footer>
+          <mat-card-actions style='text-align: center'>
+            <button mat-raised-button style='background-color: red; color: white' (click)='deleteFavorite(location.locationId)'><mat-icon>cancel</mat-icon>Delete Favorite</button>
+          </mat-card-actions>
+        </mat-card-footer>
       </mat-card>
     </div>
   </mat-grid-tile>
 
   <mat-grid-tile colspan='4'>
     <div *ngIf='currentConditions'>
-      <h2>Current Conditions as of {{ currentConditions.LocalObservationDateTime | date: 'medium' }}</h2>
-      <div class='currentConditionCardContainer'>
-
-        <mat-card>
-          <mat-card-header>
-            <mat-card-subtitle>Current Temperature</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            {{ currentConditions.Temperature.Imperial.Value }}F
-          </mat-card-content>
-        </mat-card>
-
-        <mat-card>
-          <mat-card-header>
-            <mat-card-subtitle>
-              Weather Type
-            </mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <span>{{ currentConditions.WeatherText }}</span>
-            <img style='border: 1px solid black; height: 50px; width: 50px' src='assets/weathericons/{{ currentConditions.WeatherIcon }}.png'>
-          </mat-card-content>
-        </mat-card>
-      </div>
+      <app-current-conditions [currentConditions]='currentConditions'></app-current-conditions>
     </div>
   </mat-grid-tile>
 </mat-grid-list>

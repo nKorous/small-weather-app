@@ -20,11 +20,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFavoriteLocations()
-    this.getCurrentlyViewedLocation()
+    //this.getCurrentlyViewedLocation()
   }
 
   getFavoriteLocations(){
-    this.weatherService.getFavoriteLocations().subscribe(fav => {
+    this.weatherService.favoriteLocations$.subscribe(fav => {
       this.favoriteLocations = fav
     })
   }
@@ -44,11 +44,19 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  getCurrentConditions(locationId){
+  getCurrentConditions(locationId: number){
     this.weatherService.getCurrentConditions(locationId).subscribe(conditions => {
       this.currentConditions = conditions.length > 0 ? { ...conditions[0] } : null
       console.log(this.currentConditions)
     })
+  }
+
+  addFavorite(location) {
+    this.weatherService.addFavoriteLocation(location)
+  }
+
+  deleteFavorite(locationId: number){
+    this.weatherService.deleteFavoriteLocation(locationId)
   }
 
 

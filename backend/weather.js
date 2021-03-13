@@ -20,7 +20,7 @@ router.get('/currentLocalWeather', async (req, res) => {
 })
 
 router.get('/favoriteLocations', async (req, res) => {
-  db.query('SELECT * FROM favoriteLocations ORDER BY locationAdded DESC', (err, result) => {
+  db.query('SELECT * FROM favoriteLocations ORDER BY countryName, locationName', (err, result) => {
     if(result) {
       res.status(200).send(result)
     }
@@ -34,16 +34,31 @@ router.get('/favoriteLocations', async (req, res) => {
 router.post('/addFavoriteLocation', async (req, res) => {
   const body = req.body
 
-  console.log(body)
-  res.status(200)
+  const stmt = 'INSERT INTO favoriteLocations (locationName, locationId, countryName, stateName) VALUES (?, ?, ?, ?)'
+  db.query(stmt, [body.LocalizedName, body.Key, body.Country.LocalizedName, body.AdministrativeArea.LocalizedName], (err, result) => {
+    if(result) {
+      res.status(200).send(result)
+    }
 
+    if(err) {
+      sendErrorResponse('WARN', res, 'addFavoriteLocations', 'CANNOT ADD favoriteLocations', err)
+    }
+  })
 })
 
 router.delete( '/deleteFavoriteLocation', async (req, res) => {
   const locationKey = Number(req.query.locationKey)
 
-  console.log(locationKey)
-  res.status(200)
+  const stmt = 'DELETE FROM favoriteLocations WHERE locationId = ?'
+  db.query(stmt, [locationKey], (err, result) => {
+    if(result) {
+      res.status(200).send(result)
+    }
+
+    if(err) {
+      sendErrorResponse('WARN', res, 'deleteFavoriteLocations', 'CANNOT DELETE favoriteLocations', err)
+    }
+  })
 })
 
 router.get('/autocompleteLocationInfo', async (req, res)=> {

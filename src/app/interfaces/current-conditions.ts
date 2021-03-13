@@ -1,23 +1,23 @@
 export interface CurrentConditions {
-  localObservationDateTime: Date;
-  epochTime: number;
-  weatherText: string;
-  weatherIcon: number;
-  hasPrecipitation: boolean;
-  precipitationType: string;
-  isDayTime: boolean;
-  temperature: {
-    metric: {
-      value: number;
-      unit: string;
-      unitType: number;
+  LocalObservationDateTime: Date;
+  EpochTime: number;
+  WeatherText: string;
+  WeatherIcon: number;
+  HasPrecipitation: boolean;
+  PrecipitationType: string;
+  IsDayTime: boolean;
+  Temperature: {
+    Metric: {
+      Value: number;
+      Unit: string;
+      UnitType: number;
     },
-    imperial: {
-      value: number;
-      unit: string;
-      unitType: number;
+    Imperial: {
+      Value: number;
+      Unit: string;
+      UnitType: number;
     }
   }
-  mobileLink: string;
-  link: string
+  MobileLink: string;
+  Link: string
 }

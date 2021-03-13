@@ -1,0 +1,4 @@
+.currentConditionCardContainer {
+  display: flex;
+  flex-direction: row
+}

@@ -19,6 +19,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CurrentConditionsComponent } from './components/current-conditions/current-conditions.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     PageNotFoundComponent,
     TopbarComponent,
     SettingsComponent,
+    CurrentConditionsComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,24 +11,28 @@ const BASE_URL = environment.endpoint
   providedIn: 'root'
 })
 export class WeatherService {
-  currentlyViewedLocation$: BehaviorSubject<number> = new BehaviorSubject(331216)
+  currentlyViewedLocation$: BehaviorSubject<number> = new BehaviorSubject(331216) //this is SLC as the default
+
+  favoriteLocations$: BehaviorSubject<FavoriteLocation[]> = new BehaviorSubject([])
 
   constructor(private http: HttpClient) { }
 
-  getFavoriteLocations() {
-    return this.http.get<FavoriteLocation[]>(BASE_URL + '/api/weather/favoriteLocations')
+  loadFavoriteLocations() {
+    this.http.get<FavoriteLocation[]>(BASE_URL + '/api/weather/favoriteLocations').subscribe(favorites => this.favoriteLocations$.next(favorites))
   }
 
   addFavoriteLocation(newLocation: FavoriteLocation) {
     this.http.post<any>(BASE_URL + '/api/weather/addFavoriteLocation', newLocation).subscribe(response => {
-      console.log('response from adding location', response)
+      this.loadFavoriteLocations()
     })
   }
 
   deleteFavoriteLocation(locationKey: number){
     const params = new HttpParams().set('locationKey', locationKey.toString())
 
-    this.http.delete(BASE_URL + '/api/weather/deleteFavoriteLocation', { params })
+    this.http.delete(BASE_URL + '/api/weather/deleteFavoriteLocation', { params }).subscribe(response => {
+      this.loadFavoriteLocations()
+    })
   }
 
   getAutocompleteLocationInfo(searchTerm: string){
