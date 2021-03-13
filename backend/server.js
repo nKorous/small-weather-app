@@ -8,6 +8,8 @@ app.use(cors())
 const PORT = process.env.PORT || 8889
 const staticDist = "./dist/small-weather-app";
 
+const weather = require('./weather')
+
 app.listen(PORT, () => {
   console.log(`Listening on ${PORT}`)
 })
@@ -19,8 +21,6 @@ app.get("/", (req, res) => {
   res.sendFile("index.html", { root: staticDist });
 });
 
-app.get('/api/home', (req, res) => {
-  res.status(200).send({MSG: 'GOT HOME'})
-})
+app.use('/api/weather', weather)
 
 

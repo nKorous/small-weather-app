@@ -1,0 +1,14 @@
+<div>
+  <mat-label>Search: </mat-label><input matInput type='search' placholder='location'>
+</div>
+
+
+<div *ngIf='favoriteLocations.length > 0' class='favoriteLocationContainer'>
+  <mat-card *ngFor='let location of favoriteLocations'>
+    <mat-card-header>
+      <mat-card-title>Location Name: {{ location.locationName }}</mat-card-title>
+      <mat-card-subtitle *ngIf='location.stateName'>State/Province: {{ location.stateName }}</mat-card-subtitle>
+      <mat-card-subtitle>Country Name: {{ location.countryName }}</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+</div>
