@@ -1,5 +1,6 @@
 <div>
-  <mat-label>Search: </mat-label><input matInput type='search' placholder='location'>
+  <mat-label>Search: </mat-label><input matInput #searchInput type='search' placholder='location'>
+  <button mat-raised-button (click)='getSearchLocations(searchInput.value)'>Search</button>
 </div>
 
 

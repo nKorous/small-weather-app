@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
   favoriteLocations: FavoriteLocation[] = []
+  searchLocations: any[] = []
 
 
   constructor(private weatherService: WeatherService) { }
@@ -20,6 +21,13 @@ export class SearchComponent implements OnInit {
   getFavoriteLocations(){
     this.weatherService.getFavoriteLocations().subscribe(fav => {
       this.favoriteLocations = fav
+    })
+  }
+
+  getSearchLocations(searchTerm: string) {
+    this.weatherService.getAutocompleteLocationInfo(searchTerm).subscribe(response => {
+      this.searchLocations = response
+      console.log(this.searchLocations)
     })
   }
 
