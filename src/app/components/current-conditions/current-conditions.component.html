@@ -1,70 +1,83 @@
-<h2>Current Conditions for {{ locationName }}</h2>
-<h4>as of {{ currentConditions?.LocalObservationDateTime | date: 'medium' }}</h4>
-<div class='currentConditionCardContainer'>
+<mat-grid-list cols="3" rowHeight="200px" class="currentConditionsGrid">
+  <mat-grid-tile colspan="3">
+    <mat-grid-tile-header>
+      Current Conditions for {{ locationName }} as of {{ currentConditions?.LocalObservationDateTime | date: "medium" }}
+    </mat-grid-tile-header>
 
-  <mat-card>
-    <mat-card-header>
-      <mat-card-subtitle>Current Temperature</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      {{ currentConditions?.Temperature.Imperial.Value }}F
-    </mat-card-content>
-  </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-subtitle>Current Temperature</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        {{ currentConditions?.Temperature.Imperial.Value }}F
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
 
-  <mat-card>
-    <mat-card-header>
-      <mat-card-subtitle>Daily Minimum Temperature</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      {{ oneDayForecast?.Temperature.Minimum.Value }}F
-    </mat-card-content>
-  </mat-card>
+  <mat-grid-tile colspan="1">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-subtitle> Current Weather </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <img
+          class="weatherIconImg"
+          src="assets/weathericons/{{ currentConditions?.WeatherIcon }}.png"
+        />
+      </mat-card-content>
+      <mat-card-footer style="text-align: center">
+        <span>{{ currentConditions?.WeatherText }}</span>
+      </mat-card-footer>
+    </mat-card>
+  </mat-grid-tile>
 
-  <mat-card>
-    <mat-card-header>
-      <mat-card-subtitle>Daily Maximum Temperature</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      {{ oneDayForecast?.Temperature.Maximum.Value }}F
-    </mat-card-content>
-  </mat-card>
+  <mat-grid-tile colspan="1">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-subtitle>Daily Minimum/Max Temperature</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        {{ oneDayForecast?.Temperature.Minimum.Value }}F /
+        {{ oneDayForecast?.Temperature.Maximum.Value }}F
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
 
-  <mat-card>
-    <mat-card-header>
-      <mat-card-subtitle>
-        Current Weather Type
-      </mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <span>{{ currentConditions?.WeatherText }}</span>
-      <img style='border: 1px solid black; height: 50px; width: 50px' src='assets/weathericons/{{ currentConditions?.WeatherIcon }}.png'>
-    </mat-card-content>
-  </mat-card>
+  <!-- ROW 2 !-->
 
-  <mat-card>
-    <mat-card-header>
-      <mat-card-subtitle>
-        Daytime Forecasted Weather Type
-      </mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <span>{{ oneDayForecast?.Day.IconPhrase }}</span>
-      <img style='border: 1px solid black; height: 50px; width: 50px' src='assets/weathericons/{{ oneDayForecast?.Day.Icon }}.png'>
-    </mat-card-content>
-  </mat-card>
+  <mat-grid-tile colspan="1">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-subtitle> Daytime Forecast </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <img
+          class="weatherIconImg"
+          src="assets/weathericons/{{ oneDayForecast?.Day.Icon }}.png"
+        />
+      </mat-card-content>
+      <mat-card-footer style="text-align: center">
+        <span>{{ oneDayForecast?.Day.IconPhrase }}</span>
+      </mat-card-footer>
+    </mat-card>
+  </mat-grid-tile>
 
-  <mat-card>
-    <mat-card-header>
-      <mat-card-subtitle>
-        Nightly Forcasted Weather Type
-      </mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <span>{{ oneDayForecast?.Night.IconPhrase }}</span>
-      <img style='border: 1px solid black; height: 50px; width: 50px' src='assets/weathericons/{{ oneDayForecast?.Night.Icon }}.png'>
-    </mat-card-content>
-  </mat-card>
-
-
-
-</div>
+  <mat-grid-tile colspan="1">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-subtitle> Nightly Forcast </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <img
+          class="weatherIconImg"
+          src="assets/weathericons/{{ oneDayForecast?.Night.Icon }}.png"
+        />
+      </mat-card-content>
+      <mat-card-footer style="text-align: center">
+        <span>{{ oneDayForecast?.Night.IconPhrase }}</span>
+      </mat-card-footer>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

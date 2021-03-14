@@ -1,4 +1,22 @@
-.currentConditionCardContainer {
-  display: flex;
-  flex-direction: row
+.currentConditionsGrid {
+  width: 100%;
+  position: absolute;
+  top: 0px;
+}
+
+:host mat-card {
+  height: 150px;
+  width: 80%;
+}
+
+.weatherIconImg {
+  border: 1px solid black;
+  height: 50px;
+  width: 75px
+}
+
+:host mat-card-content {
+  text-align: center;
+  font-size: xx-large;
+  font-weight: bold;
 }

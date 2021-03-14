@@ -45,7 +45,7 @@
   </mat-grid-tile>
 
   <mat-grid-tile colspan='4'>
-    <div *ngIf='currentlyViewedLocationName'>
+    <div *ngIf='currentlyViewedLocationName' style='width: 100%'>
       <app-current-conditions
         [currentConditions]='currentConditions'
         [locationName]='currentlyViewedLocationName'
