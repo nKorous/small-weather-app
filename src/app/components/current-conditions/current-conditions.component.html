@@ -1,9 +1,9 @@
 <mat-grid-list cols="3" rowHeight="200px" class="currentConditionsGrid">
   <mat-grid-tile colspan="3">
     <mat-grid-tile-header>
-      Current Conditions for {{ locationName }} as of {{ currentConditions?.LocalObservationDateTime | date: "medium" }}
+      Current Conditions for {{ locationName }} as of
+      {{ currentConditions?.LocalObservationDateTime | date: "medium" }}
     </mat-grid-tile-header>
-
   </mat-grid-tile>
   <mat-grid-tile colspan="1">
     <mat-card>
@@ -23,7 +23,6 @@
       </mat-card-header>
       <mat-card-content>
         <img
-          class="weatherIconImg"
           src="assets/weathericons/{{ currentConditions?.WeatherIcon }}.png"
         />
       </mat-card-content>
@@ -53,10 +52,7 @@
         <mat-card-subtitle> Daytime Forecast </mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <img
-          class="weatherIconImg"
-          src="assets/weathericons/{{ oneDayForecast?.Day.Icon }}.png"
-        />
+        <img src="assets/weathericons/{{ oneDayForecast?.Day.Icon }}.png" />
       </mat-card-content>
       <mat-card-footer style="text-align: center">
         <span>{{ oneDayForecast?.Day.IconPhrase }}</span>
@@ -70,10 +66,7 @@
         <mat-card-subtitle> Nightly Forcast </mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <img
-          class="weatherIconImg"
-          src="assets/weathericons/{{ oneDayForecast?.Night.Icon }}.png"
-        />
+        <img src="assets/weathericons/{{ oneDayForecast?.Night.Icon }}.png" />
       </mat-card-content>
       <mat-card-footer style="text-align: center">
         <span>{{ oneDayForecast?.Night.IconPhrase }}</span>
@@ -82,6 +75,13 @@
   </mat-grid-tile>
 
   <mat-grid-tile>
-      <button mat-raised-button color='primary' routerLink='/forecastDashboard' routerLinkActive='true'>Go To Dashboard<mat-icon>arrow_right_alt</mat-icon></button>
+    <button
+      mat-raised-button
+      color="primary"
+      routerLink="/forecastDashboard"
+      routerLinkActive="true"
+    >
+      Go To Dashboard<mat-icon>arrow_right_alt</mat-icon>
+    </button>
   </mat-grid-tile>
 </mat-grid-list>

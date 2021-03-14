@@ -9,11 +9,6 @@
   width: 80%;
 }
 
-.weatherIconImg {
-  border: 1px solid black;
-  height: 50px;
-  width: 75px
-}
 
 :host mat-card-content {
   text-align: center;
