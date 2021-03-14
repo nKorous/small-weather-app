@@ -1,1 +1,11 @@
-<p>temp-gauge works!</p>
+<dx-circular-gauge id='tempGauge' [value]='value'>
+  <dxo-scale [startValue]='-20' [endValue]='120' [tickInterval]='10'>
+    <dxo-label [useRangeColors]='true'></dxo-label>
+  </dxo-scale>
+  <dxo-range-container palette='pastel'>
+    <dxi-range [startValue]='-20' [endValue]='50'></dxi-range>
+    <dxi-range [startValue]='50' [endValue]='90'></dxi-range>
+    <dxi-range [startValue]='90' [endValue]='120'></dxi-range>
+  </dxo-range-container>
+  <dxo-tooltip [enabled]='true'></dxo-tooltip>
+</dx-circular-gauge>

@@ -18,3 +18,9 @@
   border: 1px solid lightgray;
   text-align: center
 }
+
+:host ::ng-deep #tempGauge {
+  width: 80%;
+  position: relative;
+  bottom: 55px;
+}

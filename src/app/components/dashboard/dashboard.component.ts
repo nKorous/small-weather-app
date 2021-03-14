@@ -121,7 +121,6 @@ export class DashboardComponent implements OnInit {
 
   getThreeDayForecast(locationId) {
     this.weatherService.getFiveDayForecast(locationId).subscribe(forecast => {
-      console.log(forecast)
       this.threeDayForecast = forecast.DailyForecasts.slice(0, 3)
     })
   }

@@ -13,10 +13,10 @@
   <mat-grid-tile colspan='1'>
     <mat-card>
       <mat-card-header>
-        <mat-card-subtitle>Temperature Minimum</mat-card-subtitle>
+        <mat-card-subtitle>Temperature Minimum ({{ day.Temperature.Minimum.Value }}F)</mat-card-subtitle>
       </mat-card-header>
         <mat-card-content>
-          {{ day.Temperature.Minimum.Value }}F
+          <temp-gauge class='tempGauge' value='{{ day.Temperature.Minimum.Value }}'></temp-gauge>
         </mat-card-content>
     </mat-card>
   </mat-grid-tile>
@@ -24,10 +24,10 @@
   <mat-grid-tile colspan='1'>
     <mat-card>
       <mat-card-header>
-        <mat-card-subtitle>Temperature Maximum</mat-card-subtitle>
+        <mat-card-subtitle>Temperature Maximum ({{ day.Temperature.Maximum.Value }}F)</mat-card-subtitle>
       </mat-card-header>
         <mat-card-content>
-          {{ day.Temperature.Maximum.Value }}F
+          <temp-gauge class='tempGauge' value='{{ day.Temperature.Maximum.Value }}'></temp-gauge>
         </mat-card-content>
     </mat-card>
   </mat-grid-tile>

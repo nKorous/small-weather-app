@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatMenuModule } from '@angular/material/menu'
@@ -13,15 +14,14 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatInputModule } from '@angular/material/input'
 
+import { DxCircularGaugeModule } from 'devextreme-angular';
+
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { TopbarComponent } from './components/topbar/topbar.component';
 import { SettingsComponent } from './components/settings/settings.component';
-import { HttpClientModule } from '@angular/common/http';
 import { CurrentConditionsComponent } from './components/current-conditions/current-conditions.component';
 import { TempGaugeComponent } from './components/temp-gauge/temp-gauge.component';
-
 
 @NgModule({
   declarations: [
@@ -29,7 +29,6 @@ import { TempGaugeComponent } from './components/temp-gauge/temp-gauge.component
     HomeComponent,
     DashboardComponent,
     PageNotFoundComponent,
-    TopbarComponent,
     SettingsComponent,
     CurrentConditionsComponent,
     TempGaugeComponent,
@@ -48,6 +47,9 @@ import { TempGaugeComponent } from './components/temp-gauge/temp-gauge.component
     MatIconModule,
     MatGridListModule,
     MatInputModule,
+
+    //DevExtreme
+    DxCircularGaugeModule,
 
   ],
   providers: [],
