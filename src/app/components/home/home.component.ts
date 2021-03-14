@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit {
   getCurrentlyViewedLocation(){
     this.weatherService.currentlyViewedLocation$.subscribe(id => {
       this.currentlyViewedLocationID = id.locationId
+      this.currentlyViewedLocationName = id.locationName
 
       this.getCurrentConditions(this.currentlyViewedLocationID)
     })
