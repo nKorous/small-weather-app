@@ -1,1 +1,63 @@
-<p>dashboard works!</p>
+<mat-grid-list cols='5'
+  rowHeight='33%'
+  *ngFor='let day of fiveDayForecast'
+  class='dashboardGridList'
+  gutterSize='5px'>
+  <mat-grid-tile colspan='1'>
+      {{ day.Date | date: 'longDate' }}
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan='1'>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-subtitle>Temperature Minimum</mat-card-subtitle>
+      </mat-card-header>
+        <mat-card-content>
+          {{ day.Temperature.Minimum.Value }}F
+        </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan='1'>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-subtitle>Temperature Maximum</mat-card-subtitle>
+      </mat-card-header>
+        <mat-card-content>
+          {{ day.Temperature.Maximum.Value }}F
+        </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan='1'>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-subtitle>
+          Day Weather
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <img src='assets/weathericons/{{ day.Day.Icon }}.png'>
+      </mat-card-content>
+      <mat-card-footer>
+        <span>{{ day.Day.IconPhrase }}</span>
+      </mat-card-footer>
+    </mat-card>
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan='1'>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-subtitle>
+          Night Weather
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <img src='assets/weathericons/{{ day.Night.Icon }}.png'>
+      </mat-card-content>
+      <mat-card-footer>
+        <span>{{ day.Night.IconPhrase }}</span>
+      </mat-card-footer>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

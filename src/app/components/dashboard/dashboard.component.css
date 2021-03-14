@@ -1,0 +1,14 @@
+.dashboardGridList {
+  border-bottom: 1px dotted black;
+}
+
+:host mat-grid-tile {
+  height: 100% !important;
+}
+
+:host mat-card {
+  width: 95%;
+  height: 80%;
+  border: 1px solid lightgray;
+  text-align: center
+}

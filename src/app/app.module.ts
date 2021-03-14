@@ -20,6 +20,7 @@ import { TopbarComponent } from './components/topbar/topbar.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CurrentConditionsComponent } from './components/current-conditions/current-conditions.component';
+import { TempGaugeComponent } from './components/temp-gauge/temp-gauge.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { CurrentConditionsComponent } from './components/current-conditions/curr
     TopbarComponent,
     SettingsComponent,
     CurrentConditionsComponent,
+    TempGaugeComponent,
   ],
   imports: [
     BrowserModule,
