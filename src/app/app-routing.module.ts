@@ -1,4 +1,3 @@
-import { SettingsComponent } from './components/settings/settings.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
@@ -9,7 +8,6 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home'},
   { path: 'home', component: HomeComponent },
   { path: 'forecastDashboard', component: DashboardComponent },
-  { path: 'settings', component: SettingsComponent },
 
 
 

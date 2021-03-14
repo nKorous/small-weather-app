@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFavoriteLocations()
-    //this.getCurrentlyViewedLocation()
+    this.getCurrentlyViewedLocation()
   }
 
   getFavoriteLocations(){

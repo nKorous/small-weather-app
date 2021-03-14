@@ -19,7 +19,6 @@ import { DxCircularGaugeModule } from 'devextreme-angular';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { SettingsComponent } from './components/settings/settings.component';
 import { CurrentConditionsComponent } from './components/current-conditions/current-conditions.component';
 import { TempGaugeComponent } from './components/temp-gauge/temp-gauge.component';
 
@@ -29,7 +28,6 @@ import { TempGaugeComponent } from './components/temp-gauge/temp-gauge.component
     HomeComponent,
     DashboardComponent,
     PageNotFoundComponent,
-    SettingsComponent,
     CurrentConditionsComponent,
     TempGaugeComponent,
   ],
