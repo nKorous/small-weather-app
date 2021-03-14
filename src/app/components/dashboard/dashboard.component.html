@@ -1,6 +1,9 @@
+<div class='forecastHeader'>
+  3 Day Forecast for {{ location?.locationName }}, {{ location?.locationCountry }}
+</div>
 <mat-grid-list cols='5'
   rowHeight='33%'
-  *ngFor='let day of fiveDayForecast'
+  *ngFor='let day of threeDayForecast'
   class='dashboardGridList'
   gutterSize='5px'>
   <mat-grid-tile colspan='1'>

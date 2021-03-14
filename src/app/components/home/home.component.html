@@ -36,7 +36,7 @@
         </mat-card-header>
         <mat-card-footer>
           <mat-card-actions style='text-align: center'>
-            <button mat-raised-button class='viewLocationButton' (click)='handleClickOnLocation(location.locationName, location.locationId)'><mat-icon>pageview</mat-icon>View Location</button>
+            <button mat-raised-button class='viewLocationButton' (click)='handleClickOnLocation(location.locationName, location.locationId, location.countryName)'><mat-icon>pageview</mat-icon>View Location</button>
             <button mat-raised-button style='background-color: red; color: white' (click)='deleteFavorite(location.locationId)'><mat-icon>cancel</mat-icon>Delete Favorite</button>
           </mat-card-actions>
         </mat-card-footer>

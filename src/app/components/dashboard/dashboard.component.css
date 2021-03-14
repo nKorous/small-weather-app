@@ -1,3 +1,9 @@
+.forecastHeader {
+  border-bottom: 1px dotted black;
+  padding: 10px;
+  font-size: x-large;
+}
+
 .dashboardGridList {
   border-bottom: 1px dotted black;
 }

@@ -1,3 +1,4 @@
+import { WeatherService } from 'src/app/services/weather.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  fiveDayForecast: any[] = [
+  location: { locationId: number, locationName: string, locationCountry: string } = { locationId: null, locationName: null, locationCountry: null}
+  threeDayForecast: any[] = [
     {
       Date: '2021-03-14T07:00:00-06:00',
       EpochDate: 1615726800,
@@ -104,7 +106,23 @@ export class DashboardComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(private weatherService: WeatherService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    //this.getLastViewedLocation()
+  }
+
+  getLastViewedLocation() {
+    this.weatherService.currentlyViewedLocation$.subscribe(location => {
+      this.location = location
+      this.getThreeDayForecast(location.locationId)
+    })
+  }
+
+  getThreeDayForecast(locationId) {
+    this.weatherService.getFiveDayForecast(locationId).subscribe(forecast => {
+      console.log(forecast)
+      this.threeDayForecast = forecast.DailyForecasts.slice(0, 3)
+    })
+  }
 }

@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
 
   getCurrentlyViewedLocation(){
     this.weatherService.currentlyViewedLocation$.subscribe(id => {
-      this.currentlyViewedLocationID = id
+      this.currentlyViewedLocationID = id.locationId
 
       this.getCurrentConditions(this.currentlyViewedLocationID)
     })
@@ -67,12 +67,14 @@ export class HomeComponent implements OnInit {
     this.weatherService.deleteFavoriteLocation(locationId)
   }
 
-  handleClickOnLocation(locationName: string, locationId: number) {
+  handleClickOnLocation(locationName: string, locationId: number, locationCountry: string) {
     this.currentlyViewedLocationID = locationId
     this.currentlyViewedLocationName = locationName
 
     this.getCurrentConditions(locationId)
     this.getOneDayForecast(locationId)
+
+    this.weatherService.currentlyViewedLocation$.next({locationId, locationName, locationCountry})
   }
 
 

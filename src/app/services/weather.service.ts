@@ -1,3 +1,4 @@
+import { CurrentlyViewedLocation } from './../interfaces/currently-viewed-location';
 import { CurrentConditions } from './../interfaces/current-conditions';
 import { environment } from './../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -11,7 +12,7 @@ const BASE_URL = environment.endpoint
   providedIn: 'root'
 })
 export class WeatherService {
-  currentlyViewedLocation$: BehaviorSubject<number> = new BehaviorSubject(331216) //this is SLC as the default
+  currentlyViewedLocation$: BehaviorSubject<CurrentlyViewedLocation> = new BehaviorSubject({locationId: 331216, locationName: 'Salt Lake City', locationCountry: 'United States'}) //this is SLC as the default
   favoriteLocations$: BehaviorSubject<FavoriteLocation[]> = new BehaviorSubject([])
 
   constructor(private http: HttpClient) { }
