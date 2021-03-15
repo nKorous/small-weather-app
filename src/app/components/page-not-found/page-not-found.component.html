@@ -1,1 +1,21 @@
-<p>page-not-found works!</p>
+<div class='pageNotFoundMainDiv'>
+  <mat-card class='notFoundCard'>
+    <mat-card-header>
+      <mat-card-title>OOPS...</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Looks like you fell through a worm hole to someplace that doesn't
+        exist yet. All well.
+      </p>
+      <p>Click the button below to go back to home or use the menu to choose a different location</p>
+    </mat-card-content>
+    <mat-card-footer>
+      <mat-card-actions style='text-align: center'>
+        <button mat-raised-button color='primary' routerLink='/home' routerLinkActive='true'>
+          <mat-icon>home</mat-icon>
+          Go Home
+        </button>
+      </mat-card-actions>
+    </mat-card-footer>
+  </mat-card>
+</div>
